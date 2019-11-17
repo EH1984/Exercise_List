@@ -1,0 +1,22 @@
+{
+  "name": "test2",
+  "version": "1.0.0",
+  "description": "Exercise Tracker",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Eugene Hamill",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "express-validator": "^6.2.0",
+    "mongoose": "^5.7.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
