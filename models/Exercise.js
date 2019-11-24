@@ -1,7 +1,10 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const exerciseSchema = new mongoose.Schema(
   {
+    index: {
+      type: Number
+    },
     description: {
       type: String,
       required: true
@@ -22,4 +25,4 @@ const exerciseSchema = new mongoose.Schema(
   }
 );
 
-module.exports = Exercise = mongoose.model("exercise", exerciseSchema);
+module.exports = Exercise = mongoose.model('exercise', exerciseSchema);

@@ -25,8 +25,12 @@ router.post(
     check('description', 'Please enter a description!')
       .not()
       .isEmpty(),
-    check('duration', 'Please enter a duration').isNumeric(),
-    check('intensity', 'Please enter an intensity level').isNumeric()
+    check('duration', 'Please enter a duration')
+      .not()
+      .isEmpty(),
+    check('intensity', 'Please enter an intensity level')
+      .not()
+      .isEmpty()
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -37,13 +41,24 @@ router.post(
     const { description, duration, intensity } = req.body;
 
     try {
+      // Count Number of documents to get index
+      let index = await Exercise.countDocuments({}, (err, count) => {
+        if (err) throw err;
+        // console.log(`Number of documents: ${count}`);
+      });
+
+      //Get new index number
+      index++;
+
       const exercise = new Exercise({
+        index,
         description,
         duration,
         intensity
       });
 
       await exercise.save();
+
       res.json(exercise);
     } catch (err) {
       console.error(err.message);
